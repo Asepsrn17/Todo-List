@@ -20,7 +20,7 @@
       <p class="fst-italic">Belum ada task</p>
     </div>
   </div>
-  <div class="action py-2 col-8" style="margin-left: 10px;">
+  <div class="action py-2 col-5" style="margin-left: 10px;">
     <a href="#" class="add-button" v-if="!isCreating" @click="isCreating = !isCreating">Add
       Task</a>
     <div class="add-card" v-else>
