@@ -24,6 +24,7 @@
       Task</a>
     <div class="add-card" v-else>
       <div v-if="isTitleEmpty" class="error-message btn btn-danger mb-1">Title harus di isi!</div>
+      <p v-if="showLengthTitle" style="color: red;">Panjang title minimal 3 karakter</p>
       <div class="card mb-2">
         <div class="card-body d-flex flex-column p-0">
           <input v-model="titleValue" class="form-control border-0 mb-2" placeholder="Title" type="text">
@@ -51,13 +52,18 @@ export default {
       isCreating: false,
       titleValue: '',
       descriptionValue: '',
-      isTitleEmpty: false
+      isTitleEmpty: false,
+      showLengthTitle: false
     }
   },
   methods: {
     addTask() {
       if (this.titleValue.trim() === '') {
-        this.isTitleEmpty = true
+        this.isTitleEmpty = true;
+        this.showLengthTitle = false
+      } else if (this.titleValue.length < 3) {
+        this.isTitleEmpty = false;
+        this.showLengthTitle = true;
       } else {
         console.log('title: ', this.titleValue);
         console.log('description: ', this.descriptionValue);
@@ -72,6 +78,7 @@ export default {
         this.descriptionValue = '';
         this.isCreating = false;
         this.isTitleEmpty = false;
+        this.showLengthTitle = false;
       }
     },
     deleteTask(item) {
