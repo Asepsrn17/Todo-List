@@ -2,8 +2,7 @@
   <div class="list-task" style="margin-top: 10px; margin-left: 10px;">
     <h3>Todo List</h3>
     <div v-if="tasks.length > 0">
-      <div v-for="item of tasks" :key="item.id" :class="['item-task d-flex align-items-start border-bottom pt-3 pb-4',
-        isGrid ? 'col-12 col-md-6 col-lg-4' : 'col-12']">
+      <div v-for="item of tasks" :key="item.id" :class="['item-task d-flex align-items-start border-bottom pt-3 pb-4']">
         <input type="checkbox" name="status" id="task" class="me-2 mt-2" :checked="item.isDone" v-model="item.isDone">
         <div class="d-flex flex-column">
           <div :class="['title-task mb-1', item.isDone ? 'text-decoration-line-through fst-italic' : '']">
@@ -48,13 +47,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 export default {
   data() {
     return {
-      tasks: [
-      ],
-      isGrid: {
-        type: Boolean,
-        required: true,
-        default: true
-      },
+      tasks: [],
       isCreating: false,
       titleValue: '',
       descriptionValue: '',
